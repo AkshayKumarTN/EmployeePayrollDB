@@ -17,3 +17,5 @@ VALUES('Swapnil',50000.00,'09-18-2020'),
 ('Terisa',60000.00,'11-10-2018'),
 ('Bob',55000.00,'01-01-2017');
 
+-----------UC4-Retrive All Data From Table---------------
+Select * from Employee_Payroll;
