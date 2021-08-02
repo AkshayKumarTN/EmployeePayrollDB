@@ -27,3 +27,13 @@ SELECT salary FROM [Employee_Payroll] WHERE Name = 'Swapnil';
 
 --View Employees Who Joined Between the given Date Range-----
 SELECT * FROM Employee_Payroll WHERE Start_Date BETWEEN CAST('01-01-2018' as date) and GETDATE();
+
+-----------UC6-Add Gender Column In Table------
+
+--ADD a gender field in the table-----
+ALTER TABLE Employee_Payroll ADD Gender CHAR(1);
+
+--Assign Gender to all entries-----
+UPDATE Employee_Payroll SET Gender = 'M' WHERE Name <> 'Terisa';
+
+UPDATE Employee_Payroll SET Gender = 'F' WHERE Name = 'Terisa';
