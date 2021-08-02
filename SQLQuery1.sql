@@ -19,3 +19,10 @@ VALUES('Swapnil',50000.00,'09-18-2020'),
 
 -----------UC4-Retrive All Data From Table---------------
 Select * from Employee_Payroll;
+
+------------UC5-Select Based On Conditions------------
+--Retrieve Salary of a particular employee-------
+SELECT salary FROM [Employee_Payroll] WHERE Name = 'Swapnil';
+
+--View Employees Who Joined Between the given Date Range-----
+SELECT * FROM Employee_Payroll WHERE Start_Date BETWEEN CAST('01-01-2018' as date) and GETDATE();
