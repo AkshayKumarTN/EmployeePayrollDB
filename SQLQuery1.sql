@@ -21,6 +21,7 @@ VALUES('Swapnil',50000.00,'09-18-2020'),
 Select * from Employee_Payroll;
 
 ------------UC5-Select Based On Conditions------------
+
 --Retrieve Salary of a particular employee-------
 SELECT salary FROM [Employee_Payroll] WHERE Name = 'Swapnil';
 
