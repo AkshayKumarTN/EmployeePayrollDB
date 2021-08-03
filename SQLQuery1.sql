@@ -54,3 +54,9 @@ SELECT GENDER,MIN(SALARY) AS MINIMUM_SALARY FROM Employee_Payroll GROUP BY GENDE
 
 --Number of male and female employees
 SELECT GENDER,COUNT(GENDER) AS TOTAL_COUNT FROM Employee_Payroll GROUP BY GENDER;
+
+------------UC8-Add Columns----------------
+alter table employee_payroll add
+phone_number varchar(15),
+address varchar(40) DEFAULT 'Indian',
+department varchar(10);
