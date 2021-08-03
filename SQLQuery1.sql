@@ -60,3 +60,10 @@ alter table employee_payroll add
 phone_number varchar(15),
 address varchar(40) DEFAULT 'Indian',
 department varchar(10);
+
+--------------UC9-Adding Tax Columns---------------
+alter table employee_payroll add 
+deduction float,
+taxable_pay real,
+income_tax float,
+net_pay real;
