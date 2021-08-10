@@ -12,35 +12,37 @@ insert into EmployeeDepartment values
 (2,'Marketing');
 
 --creating employee table
-create table employee
+create table Employee
 (
-Id int identity(1,1) not null,
+Id int not null,
 Name varchar(25) not null,
 Gender char(1) not null,
-Phone_Number varchar(13) not null,
+PhoneNumber varchar(13) not null,
 Address varchar(250) not null default 'India',
 );
 -- insert data into employee table
-insert into employee values
-('Bill', 'M', '9424787443', 'New York'),
-('Terissa', 'F', '8109322276', 'Atlanta'),
-('Charlie', 'M', '9926707344', 'Boston');
+insert into Employee values
+(1,'Swapnil', 'M', '9876543219', 'New York'),
+(2,'Billy', 'M', '9876543201', 'Indian'),
+(3,'Terisa', 'F', '9823456789', 'Atlanta'),
+(4,'Bob', 'M', '9987654321', 'Boston');
 
 create table Payroll
 (
 Id int not null,
 Start date not null,
-Basic_pay money not null,
+Salary money not null,
 Deduction money,
-Taxable_pay money,
-Income_tax money,
-Net_pay money not null
+TaxablePay money,
+IncomeTax money,
+NetPay money not null 
 );
 --insert data in payroll
 insert into Payroll values
 (1, '2018-01-03', 100000, 10000, 90000, 1000, 89000),
 (2, '2019-11-13', 200000, 10000, 190000,3000,187000),
-(3, '2020-05-21', 300000, 20000, 280000, 5000, 275000);
+(3, '2020-05-21', 300000, 20000, 280000, 5000, 275000),
+(4, '2021-01-03', 150000, 15000, 230000, 3000, 239000);
 
 ---------------UC12- Aggregate Functions After Table Splitting----------------------------
 
@@ -74,3 +76,18 @@ select gender,MAX(payroll.Basic_pay) as Max_Pay
 from Payroll payroll inner join employee emp
 on payroll.Id = emp.Id
 group by gender;
+
+---------------------------------------------------------------
+
+ALTER TABLE Employee Add PRIMARY KEY (Id);
+
+ALTER TABLE Employee_Payroll ADD FOREIGN KEY (Id) REFERENCES Employee(Id);
+
+ALTER TABLE EmployeeDepartment ADD FOREIGN KEY (Id) REFERENCES Employee(Id);
+
+ALTER TABLE Payroll ADD FOREIGN KEY (Id) REFERENCES Employee(Id);
+
+--------------------------------------------------------------------------------------
+SELECT Employee.Id,Employee.Name,Employee.Gender,Employee.PhoneNumber,Employee.Address,
+Employee_Payroll.Department,Employee_Payroll.Deduction,Employee_Payroll.Salary, Employee_Payroll.IncomeTax,
+Employee_Payroll.TaxablePay,Employee_Payroll.NetPay FROM Employee_Payroll JOIN Employee ON Employee_Payroll.Id=Employee.Id;
